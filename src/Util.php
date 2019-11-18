@@ -1,7 +1,7 @@
 <?php
 
-namespace Checkdomain\Holiday;
-use Checkdomain\Holiday\Model\Holiday;
+namespace OpenDroplet\Holiday;
+use OpenDroplet\Holiday\Model\Holiday;
 
 /**
  * Class Util
