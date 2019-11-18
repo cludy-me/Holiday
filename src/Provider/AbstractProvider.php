@@ -1,9 +1,9 @@
 <?php
 
-namespace Checkdomain\Holiday\Provider;
+namespace OpenDroplet\Holiday\Provider;
 
-use Checkdomain\Holiday\Model\Holiday;
-use Checkdomain\Holiday\ProviderInterface;
+use OpenDroplet\Holiday\Model\Holiday;
+use OpenDroplet\Holiday\ProviderInterface;
 
 /**
  * Class AbstractProvider
