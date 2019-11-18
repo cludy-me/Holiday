@@ -1,6 +1,4 @@
-<?php
-
-namespace OpenDroplet\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Class Easter
@@ -52,7 +50,7 @@ abstract class AbstractEaster extends AbstractProvider
      */
     protected function getEasterDates($year, $orthodox = false)
     {
-        $easterSunday = $orthodox ? $this->createOrthodoxSunday($year) :  $this->createSunday($year);
+        $easterSunday = $orthodox ? $this->createOrthodoxSunday($year) : $this->createSunday($year);
 
         $easterSunday->setTimezone(new \DateTimeZone(date_default_timezone_get()));
 
@@ -69,7 +67,6 @@ abstract class AbstractEaster extends AbstractProvider
         $shroveTuesday = clone $easterSunday;
         $shroveTuesday->modify('-47 days');
 
-
         $pentecostSunday = clone $easterSunday;
         $pentecostSunday->modify('+49 days');
         $pentecostMonday = clone $pentecostSunday;
@@ -79,7 +76,7 @@ abstract class AbstractEaster extends AbstractProvider
         $corpusChristi = clone $easterSunday;
         $corpusChristi->modify('+60 days');
 
-        return array(
+        return [
             'shroveTuesday' => $shroveTuesday,
             'maundyThursday' => $maundyThursday,
             'easterSunday' => $easterSunday,
@@ -91,7 +88,6 @@ abstract class AbstractEaster extends AbstractProvider
             'pentecostSunday' => $pentecostSunday,
             'pentecostMonday' => $pentecostMonday,
             'corpusChristi' => $corpusChristi
-        );
+        ];
     }
-
 }

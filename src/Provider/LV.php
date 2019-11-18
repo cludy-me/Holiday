@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Latvian non-working holidays provider
@@ -22,9 +20,9 @@ class LV extends AbstractEaster
     {
         $easter = $this->getEasterDates($year);
 
-        $mothersDay = date('m-d', strtotime('second Sunday of May '. $year));
+        $mothersDay = date('m-d', strtotime('second Sunday of May ' . $year));
 
-        $holidays = array(
+        return [
             '01-01' => $this->createData('Jaunais Gads'),
             '05-01' => $this->createData('Darba svētki'),
             '05-04' => $this->createData('Latvijas Republikas Neatkarības atjaunošanas diena'),
@@ -41,9 +39,6 @@ class LV extends AbstractEaster
             $easter['goodFriday']->format(self::DATE_FORMAT) => $this->createData('Lielā Piektdiena'),
             $easter['easterSunday']->format(self::DATE_FORMAT) => $this->createData('Lieldienas'),
             $easter['easterMonday']->format(self::DATE_FORMAT) => $this->createData('Otrās Lieldienas'),
-        );
-
-        return $holidays;
+        ];
     }
-
 }

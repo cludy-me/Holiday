@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Swedish holiday provider
@@ -19,16 +17,14 @@ class SE extends AbstractEaster
     public function getHolidaysByYear($year)
     {
         $easter = $this->getEasterDates($year);
-
         $midSummerDay = $this->getMidSummerDay($year);
-
         $allSaintsDay = $this->getAllSaintsDay($year);
 
-        return array(
+        return [
             '01-01' => $this->createData('Nyårsdagen'),
-            '01-05' => $this->createData('Trettondagsafton', array('halfday' => true)),
+            '01-05' => $this->createData('Trettondagsafton', ['halfday' => true]),
             '01-06' => $this->createData('Trettondedag jul'),
-            '04-30' => $this->createData('Valborgsmässoafton', array('halfday' => true)),
+            '04-30' => $this->createData('Valborgsmässoafton', ['halfday' => true]),
             '05-01' => $this->createData('Första maj'),
             '06-06' => $this->createData('Sveriges nationaldag'),
             '12-24' => $this->createData('Julafton'),
@@ -36,7 +32,7 @@ class SE extends AbstractEaster
             '12-26' => $this->createData('Annandag jul'),
             '12-31' => $this->createData('Nyårsafton'),
             // Variable dates
-            $easter['maundyThursday']->format(self::DATE_FORMAT) => $this->createData('Skärtorsdagen', array('halfday' => true)),
+            $easter['maundyThursday']->format(self::DATE_FORMAT) => $this->createData('Skärtorsdagen', ['halfday' => true]),
             $easter['goodFriday']->format(self::DATE_FORMAT) => $this->createData('Långfredagen'),
             $easter['saturday']->format(self::DATE_FORMAT) => $this->createData('Påskafton'),
             $easter['easterSunday']->format(self::DATE_FORMAT) => $this->createData('Påskdagen'),
@@ -49,8 +45,8 @@ class SE extends AbstractEaster
             $midSummerDay->modify('-1 day')->format(self::DATE_FORMAT) => $this->createData('Midsommarafton'),
 
             $allSaintsDay->format(self::DATE_FORMAT) => $this->createData('Alla helgons dag'),
-            $allSaintsDay->modify('-1 day')->format(self::DATE_FORMAT) => $this->createData('Allhelgonaafton', array('halfday' => true))
-        );
+            $allSaintsDay->modify('-1 day')->format(self::DATE_FORMAT) => $this->createData('Allhelgonaafton', ['halfday' => true])
+        ];
     }
 
     /**
@@ -60,11 +56,11 @@ class SE extends AbstractEaster
      */
     public function getMidSummerDay($year)
     {
-        $date = new \DateTime($year.'-06-20');
+        $date = new \DateTime($year . '-06-20');
         for ($i = 0; $i < 7; $i++) {
-            if ($date->format('w') == 6) {
+            if ($date->format('w') == 6)
                 break;
-            }
+                
             $date->add(new \DateInterval('P1D'));
         }
 
@@ -78,11 +74,11 @@ class SE extends AbstractEaster
      */
     public function getAllSaintsDay($year)
     {
-        $date = new \DateTime($year.'-10-31');
+        $date = new \DateTime($year . '-10-31');
         for ($i = 0; $i < 7; $i++) {
-            if ($date->format('w') == 6) {
+            if ($date->format('w') == 6)
                 break;
-            }
+
             $date->add(new \DateInterval('P1D'));
         }
 

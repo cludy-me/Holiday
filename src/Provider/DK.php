@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Denmark holiday provider
@@ -22,7 +20,7 @@ class DK extends AbstractEaster
         $greatPrayerDay = clone $easter['easterSunday'];
         $greatPrayerDay->modify('+26 days');
 
-        $holidays = array(
+        return [
             '01-01' => $this->createData('Nytår'),
             '12-25' => $this->createData('1. Juledag'),
             '12-26' => $this->createData('2. Juledag'),
@@ -36,8 +34,6 @@ class DK extends AbstractEaster
             $easter['ascensionDay']->format(self::DATE_FORMAT)    => $this->createData('Kristi Himmelfartsdag'),
             $easter['pentecostSunday']->format(self::DATE_FORMAT) => $this->createData('Pinsedag'),
             $easter['pentecostMonday']->format(self::DATE_FORMAT) => $this->createData('2. Pinsedag')
-        );
-
-        return $holidays;
+        ];
     }
 }

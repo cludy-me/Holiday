@@ -1,6 +1,4 @@
-<?php
-
-namespace OpenDroplet\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Lithuanian non-working holidays provider
@@ -22,10 +20,10 @@ class LT extends AbstractEaster
     {
         $easter = $this->getEasterDates($year);
 
-        $mothersDay = date('m-d', strtotime('first Sunday of May '. $year));
-        $fathersDay = date('m-d', strtotime('first Sunday of June '. $year));
+        $mothersDay = date('m-d', strtotime('first Sunday of May ' . $year));
+        $fathersDay = date('m-d', strtotime('first Sunday of June ' . $year));
 
-        $holidays = array(
+        return [
             '01-01' => $this->createData('Naujieji metai'),
             '02-16' => $this->createData('Lietuvos valstybės atkūrimo diena'),
             '03-11' => $this->createData('Lietuvos nepriklausomybės atkūrimo diena'),
@@ -44,9 +42,6 @@ class LT extends AbstractEaster
 
             // Easter dates
             $easter['easterSunday']->format(self::DATE_FORMAT) => $this->createData('Velykos'),
-        );
-
-        return $holidays;
+        ];
     }
-
 }

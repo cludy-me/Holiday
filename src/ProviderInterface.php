@@ -1,6 +1,4 @@
-<?php
-
-namespace OpenDroplet\Holiday;
+<?php namespace OpenDroplet\Holiday;
 
 /**
  * Interface ProviderInterface

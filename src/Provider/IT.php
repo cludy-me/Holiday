@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Italian holiday provider
@@ -20,7 +18,7 @@ class IT extends AbstractEaster
     {
         $easter = $this->getEasterDates($year);
 
-        $holidays = array(
+        return [
             '01-01' => $this->createData('Capodanno'),
             '01-06' => $this->createData('Epifania'),
             '04-25' => $this->createData('Liberazione dal nazifascismo (1945)'),
@@ -34,8 +32,6 @@ class IT extends AbstractEaster
             // Variable dates
             $easter['easterSunday']->format(self::DATE_FORMAT)    => $this->createData('Pasqua'),
             $easter['easterMonday']->format(self::DATE_FORMAT)    => $this->createData('Lunedì di Pasqua'),
-        );
-
-        return $holidays;
+        ];
     }
 }

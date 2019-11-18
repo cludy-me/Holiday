@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * German holiday provider
@@ -44,7 +42,7 @@ class DE extends AbstractEaster
         if (2017 === $year) {
             $reformationDayStates = null;
         } else {
-            $reformationDayStates = array(
+            $reformationDayStates = [
                 self::STATE_BB,
                 self::STATE_MV,
                 self::STATE_SN,
@@ -54,10 +52,10 @@ class DE extends AbstractEaster
                 self::STATE_HH,
                 self::STATE_NI,
                 self::STATE_HB
-            );
+            ];
         }
 
-        $holidays = array(
+        return [
             // Fixed dates
             '01-01' => $this->createData('Neujahr'),
             '05-01' => $this->createData('Tag der Arbeit'),
@@ -66,49 +64,47 @@ class DE extends AbstractEaster
             '12-26' => $this->createData('2. Weihnachtstag'),
 
             // Fixed with states
-            '01-06' => $this->createData('Heilige Drei Könige', array(
+            '01-06' => $this->createData('Heilige Drei Könige', [
                 self::STATE_BW,
                 self::STATE_BY,
                 self::STATE_ST,
-            )),
+            ]),
             '10-31' => $this->createData('Reformationstag', $reformationDayStates),
-            '11-01' => $this->createData('Allerheiligen', array(
+            '11-01' => $this->createData('Allerheiligen', [
                 self::STATE_BW,
                 self::STATE_BY,
                 self::STATE_NW,
                 self::STATE_RP,
                 self::STATE_SL,
-            )),
+            ]),
 
             // Variable dates
             $easter['goodFriday']->format(self::DATE_FORMAT)      => $this->createData('Karfreitag'),
-            $easter['easterSunday']->format(self::DATE_FORMAT)    => $this->createData('Ostersonntag', array(
+            $easter['easterSunday']->format(self::DATE_FORMAT)    => $this->createData('Ostersonntag', [
                 self::STATE_BB,
                 self::STATE_HE,
-            )),
+            ]),
             $easter['easterMonday']->format(self::DATE_FORMAT)    => $this->createData('Ostermontag'),
             $easter['ascensionDay']->format(self::DATE_FORMAT)    => $this->createData('Christi Himmelfahrt'),
-            $easter['pentecostSunday']->format(self::DATE_FORMAT) => $this->createData('Pfingstsonntag', array(
+            $easter['pentecostSunday']->format(self::DATE_FORMAT) => $this->createData('Pfingstsonntag', [
                 self::STATE_BB,
                 self::STATE_HE,
-            )),
+            ]),
             $easter['pentecostMonday']->format(self::DATE_FORMAT) => $this->createData('Pfingstmontag'),
 
             // Variable with states
-            $easter['corpusChristi']->format(self::DATE_FORMAT)   => $this->createData('Fronleichnam', array(
+            $easter['corpusChristi']->format(self::DATE_FORMAT)   => $this->createData('Fronleichnam', [
                 self::STATE_BW,
                 self::STATE_BY,
                 self::STATE_HE,
                 self::STATE_NW,
                 self::STATE_RP,
                 self::STATE_SL,
-            )),
-            $repentanceDay->format(self::DATE_FORMAT) => $this->createData('Buß- und Bettag', array(
+            ]),
+            $repentanceDay->format(self::DATE_FORMAT) => $this->createData('Buß- und Bettag', [
                 self::STATE_SN
-            ))
-        );
-
-        return $holidays;
+            ])
+        ];
     }
 
     /**
@@ -118,10 +114,9 @@ class DE extends AbstractEaster
      */
     public function getDayOfRepentance($year)
     {
-        $date = new \DateTime($year.'-11-23');
+        $date = new \DateTime($year . '-11-23');
         $date->modify('previous wednesday');
 
         return $date;
     }
-
 }

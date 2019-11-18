@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 use DateTime;
 
@@ -48,7 +46,7 @@ class BR extends AbstractEaster
     {
         $easter = $this->getEasterDates($year);
 
-        $holidays = array(
+        $holidays = [
             // National Fixed
             '01-01' => $this->createData('Confraternização Universal'),
             '04-21' => $this->createData('Tiradentes'),
@@ -62,7 +60,7 @@ class BR extends AbstractEaster
             $easter['shroveTuesday']->format(self::DATE_FORMAT) => $this->createData('Carnaval'),
             $easter['goodFriday']->format(self::DATE_FORMAT)  => $this->createData('Sexta-Feira Santa'),
             $easter['corpusChristi']->format(self::DATE_FORMAT) => $this->createData('Corpus Christi'),
-        );
+        ];
 
         // Acre State
         $this->setHolidayForState($holidays, '01-23', self::STATE_AC, 'Dia do Evangélico');
@@ -188,14 +186,13 @@ class BR extends AbstractEaster
     private function setHolidayForState(&$holidays, $day, $state, $name)
     {
         // Exists?
-        if (! array_key_exists($day, $holidays)) {
+        if (!array_key_exists($day, $holidays)) 
             // Initialized as State Holiday
             $holidays[$day] = $this->createData($name, []);
-        }
+
         // Is a state holiday?
-        if (is_array($holidays[$day]['states'])) {
+        if (is_array($holidays[$day]['states']))
             // Include Current State
             $holidays[$day]['states'][] = $state;
-        }
     }
 }

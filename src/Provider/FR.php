@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * French holiday provider
@@ -21,7 +19,7 @@ class FR extends AbstractEaster
     {
         $easter = $this->getEasterDates($year);
 
-        $holidays = array(
+        $holidays = [
             '01-01' => $this->createData('Jour de l\'an'),
             '05-01' => $this->createData('Fête du Travail'),
             '05-08' => $this->createData('8 Mai 1945'),
@@ -34,15 +32,15 @@ class FR extends AbstractEaster
             $easter['easterMonday']->format(self::DATE_FORMAT)    => $this->createData('Lundi de Pâques'),
             $easter['ascensionDay']->format(self::DATE_FORMAT)    => $this->createData('Jeudi de l\'Ascension'),
             $easter['pentecostMonday']->format(self::DATE_FORMAT)    => $this->createData('Lundi de Pentecôte'),
-        );
+        ];
 
-        $holidays[$easter['goodFriday']->format(self::DATE_FORMAT)] = $this->createData('Vendredi Saint', array(
+        $holidays[$easter['goodFriday']->format(self::DATE_FORMAT)] = $this->createData('Vendredi Saint', [
             self::STATE_AM,
-        ));
+        ]);
 
-        $holidays['12-26'] = $this->createData('Saint Etienne', array(
+        $holidays['12-26'] = $this->createData('Saint Etienne', [
             self::STATE_AM,
-        ));
+        ]);
 
         return $holidays;
     }

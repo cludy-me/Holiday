@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Polish holiday provider
@@ -19,7 +17,7 @@ class PL extends AbstractEaster
     {
         $easter = $this->getEasterDates($year);
 
-        return array(
+        return [
             '01-01' => $this->createData('Nowy Rok'),
             '01-06' => $this->createData('Trzech Króli'),
             '05-01' => $this->createData('Święto Pracy'),
@@ -35,6 +33,6 @@ class PL extends AbstractEaster
             $easter['easterMonday']->format(self::DATE_FORMAT)    => $this->createData('Poniedziałek Wielkanocny'),
             $easter['corpusChristi']->format(self::DATE_FORMAT)    => $this->createData('Boże Ciało'),
             $easter['pentecostSunday']->format(self::DATE_FORMAT)    => $this->createData('Zielone Świątki'),
-        );
+        ];
     }
 }

@@ -1,6 +1,4 @@
-<?php
-
-namespace OpenDroplet\Holiday\Model;
+<?php namespace OpenDroplet\Holiday\Model;
 
 /**
  * Class Holiday
@@ -35,6 +33,20 @@ class Holiday
         $this->name     = $name;
         $this->date     = $date;
         $this->states   = $states;
+    }
+
+    /*
+     *  Make class instance
+     *
+     * @param string    $name
+     * @param \DateTime $date
+     * @param array     $states
+     * 
+     * @return Holiday
+     */
+    public static function make($name = null, \DateTime $date = null, array $states = null)
+    {
+        return new static($name, $date,$states);
     }
 
     /**
@@ -96,5 +108,4 @@ class Holiday
     {
         return $this->states;
     }
-
 }

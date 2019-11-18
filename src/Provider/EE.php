@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Estonian non-working holidays provider
@@ -22,8 +20,7 @@ class EE extends AbstractEaster
     {
         $easter = $this->getEasterDates($year);
 
-        $holidays = array(
-
+        return [
             '01-01' => $this->createData('uusaasta'),
             '02-24' => $this->createData('iseseisvuspäev'),
             '05-01' => $this->createData('kevadpüha'),
@@ -39,9 +36,6 @@ class EE extends AbstractEaster
             $easter['easterSunday']->format(self::DATE_FORMAT) => $this->createData('ülestõusmispühade 1. püha'),
 
             $easter['pentecostSunday']->format(self::DATE_FORMAT) => $this->createData('nelipühade 1. püha'),
-        );
-
-        return $holidays;
+        ];
     }
-
 }

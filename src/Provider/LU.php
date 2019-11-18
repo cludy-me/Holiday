@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Luxembourg holiday provider
@@ -19,7 +17,7 @@ class LU extends AbstractEaster
     {
         $easter = $this->getEasterDates($year);
 
-        $holidays = array(
+        $holidays = [
             '01-01' => $this->createData('Jour de l\'an'),
             '05-01' => $this->createData('Premier Mai'),
             '06-23' => $this->createData('Jour de la célébration de l\'anniversaire du Grand-Duc'),
@@ -31,11 +29,10 @@ class LU extends AbstractEaster
             $easter['easterMonday']->format(self::DATE_FORMAT) => $this->createData('Lundi de Pâques'),
             $easter['ascensionDay']->format(self::DATE_FORMAT) => $this->createData('Ascension'),
             $easter['pentecostMonday']->format(self::DATE_FORMAT) => $this->createData('Lundi de Pentecôte'),
-        );
+        ];
 
-        if (2019 <= $year) {
+        if (2019 <= $year)
             $holidays['05-09'] = $this->createData('Journée de l\'Europe');
-        }
 
         return $holidays;
     }

@@ -1,6 +1,4 @@
-<?php
-
-namespace OpenDroplet\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 use OpenDroplet\Holiday\Model\Holiday;
 use OpenDroplet\Holiday\ProviderInterface;
@@ -28,9 +26,8 @@ abstract class AbstractProvider implements ProviderInterface
         if (isset($holidays[$day])) {
             $holiday = $this->createModelFromData($holidays[$day], $date);
 
-            if (!$this->hasState($holiday, $state)) {
+            if (!$this->hasState($holiday, $state))
                 $holiday = null;
-            }
 
             return $holiday;
         }
@@ -46,13 +43,7 @@ abstract class AbstractProvider implements ProviderInterface
      */
     protected function createModelFromData(array $data, \DateTime $date)
     {
-        $holiday = new Holiday(
-            $data['name'],
-            $date,
-            $data['states']
-        );
-
-        return $holiday;
+        return Holiday::make($data['name'], $date, $data['states']);
     }
 
     /**
@@ -63,18 +54,15 @@ abstract class AbstractProvider implements ProviderInterface
      */
     protected function hasState(Holiday $holiday, $state = null)
     {
-        if ($state === null) {
+        if ($state === null)
             return true;
-        }
 
         $states = $holiday->getStates();
-        if (empty($states)) {
+        if (empty($states))
             return true;
-        }
 
-        if (is_array($states) && in_array($state, $states)) {
+        if (is_array($states) && in_array($state, $states))
             return true;
-        }
 
         return false;
     }
@@ -87,10 +75,9 @@ abstract class AbstractProvider implements ProviderInterface
      */
     protected function createData($name, array $states = null)
     {
-        return array(
+        return [
             'name'     => $name,
             'states'   => $states
-        );
+        ];
     }
-
 }

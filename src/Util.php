@@ -1,6 +1,5 @@
-<?php
+<?php namespace OpenDroplet\Holiday;
 
-namespace OpenDroplet\Holiday;
 use OpenDroplet\Holiday\Model\Holiday;
 
 /**
@@ -8,6 +7,16 @@ use OpenDroplet\Holiday\Model\Holiday;
  */
 class Util
 {
+
+    /**
+     * Make class instance
+     * 
+     * @return Util
+     */
+    public static function make()
+    {
+        return new static;
+    }
 
     /**
      * Instantiates a provider for a given iso code
@@ -18,15 +27,9 @@ class Util
      */
     protected function getProvider($iso)
     {
-        $instance = null;
+        $class = '\\OpenDroplet\\Holiday\\Provider\\' . $iso;
 
-        $class = '\\Checkdomain\\Holiday\\Provider\\' . $iso;
-
-        if (class_exists($class)) {
-            $instance = new $class;
-        }
-
-        return $instance;
+        return ((class_exists($class)) ? new $class : null);
     }
 
     /**
@@ -36,11 +39,7 @@ class Util
      */
     protected function getDateTime($date)
     {
-        if (!$date instanceof \DateTime) {
-            $date = new \DateTime($date);
-        }
-
-        return $date;
+        return (($date instanceof \DateTime) ? $date : new \DateTime($date));
     }
 
     /**
@@ -83,11 +82,30 @@ class Util
     {
         $iso = $this->getIsoCode($iso);
         $date = $this->getDateTime($date);
-
         $provider = $this->getProvider($iso);
-        $holiday = $provider->getHolidayByDate($date, $state);
 
-        return $holiday;
+        if (!$provider)
+            throw new \Exception($iso . " provider not found");
+
+        return $provider->getHolidayByDate($date, $state);
     }
 
+     /**
+     * Provides detailed information about a year holidays
+     *
+     * @param string  $iso
+     * @param int     $year
+     *
+     * @return mixed
+     */
+    public function getHolidays($iso, $year)
+    {
+        $iso = $this->getIsoCode($iso);
+        $provider = $this->getProvider($iso);
+
+        if (!$provider)
+            throw new \Exception($iso . " provider not found");
+
+        return $provider->getHolidaysByYear($year);
+    }
 }

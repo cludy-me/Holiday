@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Portugal holiday provider
@@ -19,7 +17,7 @@ class PT extends AbstractEaster
     {
         $easter = $this->getEasterDates($year);
 
-        $holidays = array(
+        $holidays = [
             '01-01' => $this->createData('Ano Novo'),
             '04-25' => $this->createData('25 de Abril'),
             '05-01' => $this->createData('Dia do Trabalhador'),
@@ -30,7 +28,7 @@ class PT extends AbstractEaster
             // Variable dates
             $easter['goodFriday']->format(self::DATE_FORMAT)    => $this->createData('Sexta-Feira Santa'),
             $easter['easterSunday']->format(self::DATE_FORMAT)    => $this->createData('Páscoa'),
-        );
+        ];
         //add holidays post 2015
         if ($year >= 2016) {
             $holidays['05-26'] = $this->createData('Corpo de Deus');

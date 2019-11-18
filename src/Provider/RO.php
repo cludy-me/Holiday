@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Romanian non-working holidays provider
@@ -23,7 +21,7 @@ class RO extends AbstractEaster
         // make i
         $easter = $this->getEasterDates($year, true);
 
-        $holidays = array(
+        $holidays = [
             '01-01' => $this->createData('Anul Nou'),
             '01-02' => $this->createData('Anul Nou'),
             '01-24' => $this->createData('Unirea Principatelor Române/Mica Unire'),
@@ -42,14 +40,12 @@ class RO extends AbstractEaster
 
             $easter['pentecostSunday']->format(self::DATE_FORMAT) => $this->createData('Rusaliile'),
             $easter['pentecostMonday']->format(self::DATE_FORMAT) => $this->createData('Rusaliile'),
-        );
+        ];
 
         //add holidays post 2017
-        if ($year >= 2017) {
+        if ($year >= 2017)
             $holidays['06-01'] = $this->createData('Ziua Copilului');
-        }
 
         return $holidays;
     }
-
 }

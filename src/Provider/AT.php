@@ -1,6 +1,4 @@
-<?php
-
-namespace Checkdomain\Holiday\Provider;
+<?php namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Austrian holiday provider.
@@ -13,15 +11,15 @@ namespace Checkdomain\Holiday\Provider;
 class AT extends AbstractEaster
 {
 
-	const STATE_B = 'Burgenland';
-	const STATE_K = 'Kärnten';
-	const STATE_NO = 'Niederösterreich';
-	const STATE_OO = 'Oberösterreich';
-	const STATE_S = 'Salzburg';
-	const STATE_ST = 'Steiermark';
-	const STATE_T = 'Tirol';
-	const STATE_V = 'Vorarlberg';
-	const STATE_W = 'Wien';
+    const STATE_B = 'Burgenland';
+    const STATE_K = 'Kärnten';
+    const STATE_NO = 'Niederösterreich';
+    const STATE_OO = 'Oberösterreich';
+    const STATE_S = 'Salzburg';
+    const STATE_ST = 'Steiermark';
+    const STATE_T = 'Tirol';
+    const STATE_V = 'Vorarlberg';
+    const STATE_W = 'Wien';
 
     /**
      * @param int $year
@@ -32,7 +30,7 @@ class AT extends AbstractEaster
     {
         $easter = $this->getEasterDates($year);
 
-        $holidays = array(
+        return [
             // Fixed dates
             '01-01' => $this->createData('Neujahr'),
             '01-06' => $this->createData('Heilige Drei Könige'),
@@ -50,9 +48,6 @@ class AT extends AbstractEaster
             $easter['ascensionDay']->format(self::DATE_FORMAT)    => $this->createData('Christi Himmelfahrt'),
             $easter['pentecostMonday']->format(self::DATE_FORMAT) => $this->createData('Pfingstmontag'),
             $easter['corpusChristi']->format(self::DATE_FORMAT)   => $this->createData('Fronleichnam'),
-        );
-
-        return $holidays;
+        ];
     }
-
 }
