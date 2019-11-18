@@ -1,6 +1,6 @@
 <?php
 
-namespace Checkdomain\Holiday;
+namespace OpenDroplet\Holiday;
 
 /**
  * Interface ProviderInterface
