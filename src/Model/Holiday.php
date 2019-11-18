@@ -1,6 +1,6 @@
 <?php
 
-namespace Checkdomain\Holiday\Model;
+namespace OpenDroplet\Holiday\Model;
 
 /**
  * Class Holiday
