@@ -1,7 +1,6 @@
-# checkdomain Holiday [![Build Status](https://travis-ci.org/checkdomain/Holiday.png?branch=master)](https://travis-ci.org/checkdomain/Holiday)
+# cludy-me/holiday
 
-Checkdomain/Holiday is a small library to check if a specified date is a holiday in a specific country. It also tells you if the given date is a nation wide holiday or just a holiday in some states.
-
+cludy-me/holiday is a small library to check if a specified date is a holiday in a specific country. It also tells you if the given date is a nation wide holiday or just a holiday in some states.
 
 ## Currently supported countries
 
@@ -24,15 +23,14 @@ Checkdomain/Holiday is a small library to check if a specified date is a holiday
 
 ## Your country is not supported?
 
-checkdomain Holiday is open source. If you use this library it would be great to get some support for currently not implemented countries which you are familiar with. Pull requests will be reviewed and merged fast.
+cludy-me/holiday is open source. If you use this library it would be great to get some support for currently not implemented countries which you are familiar with. Pull requests will be reviewed and merged fast.
 
 To create a new Provider please see the `ProviderInterface` interface.
 
 
 ## Requirements
 
-Checkdomain/Holiday requires php >= 5.5.
-
+OpenDroplet/holiday requires php >= 5.5.
 
 ## Installation
 
@@ -41,7 +39,7 @@ The easiest way to install this library is through [composer](http://getcomposer
 ```json
 {
    "require": {
-        "checkdomain/holiday": "~3.0.0"
+        "cludy-me/holiday": "~3.0.0"
     }
 }
 ```
@@ -54,13 +52,25 @@ Another way would be to download this library and configure the autoloading your
 To check for holidays just instantiate the Util class and call the `getHoliday` method.
 
 ```php
-$util    = new \Checkdomain\Holiday\Util();
-$holiday = $util->getHoliday('DE', '2014-01-01');
+$util    = new \OpenDroplet\Holiday\Util('LT');
+$holiday = $util->getHoliday('2014-01-01');
+```
+
+or
+
+```php
+$holiday = \OpenDroplet\Holiday\Util::make('LT')->getHoliday('2014-01-01');
 ```
 
 If you just need to know if there is a holiday on your date there is a `isHoliday` method, too.
+If you just need to know if there is a weekend on your date there is a `isWeekend` method, too.
+If you just need to know if there is a business day on your date there is a `isBusinessDay` method, too.
 
-If you need to know all holidays for a specific country you can instantiate one of the included providers yourself and call the `getHolidaysByYear` method. All providers must follow the `ProviderInterface` interface.
+If you need to know all holidays for a specific country:
+```php
+$holidays = \OpenDroplet\Holiday\Util::make('LT')->getHolidays('2014');
+```
+
 
 
 ## Running Tests

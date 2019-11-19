@@ -1,6 +1,6 @@
 <?php
 
-namespace Checkdomain\Holiday\Provider;
+namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Class LUTest

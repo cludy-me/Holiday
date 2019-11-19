@@ -14,7 +14,7 @@ class SE extends AbstractEaster
      *
      * @return array
      */
-    public function getHolidaysByYear($year)
+    public function getHolidaysByYear(int $year)
     {
         $easter = $this->getEasterDates($year);
         $midSummerDay = $this->getMidSummerDay($year);

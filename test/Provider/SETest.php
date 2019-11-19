@@ -5,7 +5,7 @@
  * @author Martin Lindhe
  * @since 2015-03-22
  */
-namespace Checkdomain\Holiday\Provider;
+namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Class SETest

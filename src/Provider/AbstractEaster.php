@@ -8,10 +8,10 @@ abstract class AbstractEaster extends AbstractProvider
     /**
      * Creating easter sunday
      *
-     * @param $year
+     * @param int $year
      * @return \DateTime
      */
-    private function createSunday($year)
+    private function createSunday(int $year)
     {
         $easterSunday = new \DateTime('21.03.' . $year);
         $easterSunday->modify(sprintf('+%d days', easter_days($year)));
@@ -22,10 +22,10 @@ abstract class AbstractEaster extends AbstractProvider
     /**
      * Creating Orthodox easter sunday
      *
-     * @param $year
+     * @param int $year
      * @return \DateTime
      */
-    private function createOrthodoxSunday($year)
+    private function createOrthodoxSunday(int $year)
     {
         $a = $year % 4;
         $b = $year % 7;
@@ -48,7 +48,7 @@ abstract class AbstractEaster extends AbstractProvider
      *
      * @return \DateTime[]
      */
-    protected function getEasterDates($year, $orthodox = false)
+    protected function getEasterDates(int $year, $orthodox = false)
     {
         $easterSunday = $orthodox ? $this->createOrthodoxSunday($year) : $this->createSunday($year);
 

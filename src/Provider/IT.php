@@ -14,7 +14,7 @@ class IT extends AbstractEaster
      *
      * @return mixed
      */
-    public function getHolidaysByYear($year)
+    public function getHolidaysByYear(int $year)
     {
         $easter = $this->getEasterDates($year);
 

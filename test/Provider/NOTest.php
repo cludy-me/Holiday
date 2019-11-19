@@ -5,7 +5,7 @@
  * @author Kristian Lunde <kristian@klunde.net>
  * @since 2014-04-18
  */
-namespace Checkdomain\Holiday\Provider;
+namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Class NOTest

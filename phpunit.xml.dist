@@ -10,11 +10,10 @@
     convertWarningsToExceptions = "true"
     processIsolation            = "false"
     stopOnFailure               = "false"
-    syntaxCheck                 = "false"
     bootstrap                   = "./vendor/autoload.php" >
 
     <testsuites>
-        <testsuite name="Checkdomain Holidays Test Suite">
+        <testsuite name="cludy-me/holidays Test Suite">
             <directory>./test</directory>
         </testsuite>
     </testsuites>

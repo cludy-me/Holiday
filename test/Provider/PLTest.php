@@ -4,11 +4,11 @@
  *
  * @author Przemek Sztuczyński <psztuczynski@gmail.com>
  */
-namespace Checkdomain\Holiday\Provider;
+namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Class ITTest
- * @package Checkdomain\Holiday\Provider
+ * @package OpenDroplet\Holiday\Provider
  */
 class PLTest extends AbstractTest
 {

@@ -4,7 +4,7 @@
  *
  * @author Tiago Carvalho <tiago.carvalho@beubi.com>
  */
-namespace Checkdomain\Holiday\Provider;
+namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Class PTTest

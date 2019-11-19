@@ -12,13 +12,13 @@ interface ProviderInterface
      *
      * @return Model\Holiday
      */
-    public function getHolidayByDate(\DateTime $date, $state = null);
+    public function getHolidayByDate(\DateTime $date, string $state = null);
 
     /**
-     * @param int    $year
+     * @param int $year
      *
      * @return mixed
      */
-    public function getHolidaysByYear($year);
+    public function getHolidaysByYear(int $year);
 
 }

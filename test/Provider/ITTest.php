@@ -5,7 +5,7 @@
  * @author Giorgio Cefaro <giorgio.cefaro@gmail.com>
  * @since 2015-03-11
  */
-namespace Checkdomain\Holiday\Provider;
+namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Class ITTest

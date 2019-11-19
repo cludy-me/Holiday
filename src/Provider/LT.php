@@ -16,7 +16,7 @@ class LT extends AbstractEaster
      *
      * @return mixed
      */
-    public function getHolidaysByYear($year)
+    public function getHolidaysByYear(int $year)
     {
         $easter = $this->getEasterDates($year);
 
@@ -25,16 +25,16 @@ class LT extends AbstractEaster
 
         return [
             '01-01' => $this->createData('Naujieji metai'),
-            '02-16' => $this->createData('Lietuvos valstybės atkūrimo diena'),
-            '03-11' => $this->createData('Lietuvos nepriklausomybės atkūrimo diena'),
+            '02-16' => $this->createData('Valstybės atkūrimo diena'),
+            '03-11' => $this->createData('Nepriklausomybės atkūrimo diena'),
             '05-01' => $this->createData('Tarptautinė darbo diena'),
-            '06-24' => $this->createData('Joninės, Rasos'),
-            '07-06' => $this->createData('Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) diena'),
-            '08-15' => $this->createData('Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)'),
-            '11-01' => $this->createData('Visų šventųjų diena (Vėlinės)'),
+            '06-24' => $this->createData('Joninės'),
+            '07-06' => $this->createData('Karaliaus Mindaugo karūnavimo diena'),
+            '08-15' => $this->createData('Žolinė'),
+            '11-01' => $this->createData('Visų šventųjų diena'),
             '12-24' => $this->createData('Šv. Kūčios'),
             '12-25' => $this->createData('Šv. Kalėdos'),
-            '12-26' => $this->createData('Šv. Kalėdos'),
+            '12-26' => $this->createData('Šv. Kalėdų antroji diena'),
 
             // floating days
             $mothersDay => $this->createData('Motinos diena'),
@@ -42,6 +42,7 @@ class LT extends AbstractEaster
 
             // Easter dates
             $easter['easterSunday']->format(self::DATE_FORMAT) => $this->createData('Velykos'),
+            $easter['easterSunday']->modify('+1 day')->format(self::DATE_FORMAT) => $this->createData('Velykų antroji diena'),
         ];
     }
 }

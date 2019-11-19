@@ -1,6 +1,6 @@
 <?php
 
-namespace Checkdomain\Holiday\Provider;
+namespace OpenDroplet\Holiday\Provider;
 
 /**
  * Class AbstractTest
@@ -8,7 +8,7 @@ namespace Checkdomain\Holiday\Provider;
 abstract class AbstractTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Checkdomain\Holiday\ProviderInterface
+     * @var \OpenDroplet\Holiday\ProviderInterface
      */
     protected $provider;
 

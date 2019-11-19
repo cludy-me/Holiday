@@ -1,23 +1,9 @@
 <?php
 
-namespace Checkdomain\Holiday\Test;
+namespace OpenDroplet\Holiday\Test;
 
 class UtilTest extends \PHPUnit\Framework\TestCase
 {
-
-    /**
-     * @var \Checkdomain\Holiday\Util
-     */
-    protected $service;
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setUp()
-    {
-        $this->service = new \Checkdomain\Holiday\Util();
-    }
-
     /**
      * @param string $iso
      * @param string $date
@@ -27,7 +13,7 @@ class UtilTest extends \PHPUnit\Framework\TestCase
      */
     public function testIsHoliday($iso, $date, array $expectation)
     {
-        $isHoliday = $this->service->isHoliday($iso, $date);
+        $isHoliday = $this->getService($iso)->isHoliday($date);
 
         $this->assertEquals($expectation[0], $isHoliday);
     }
@@ -41,7 +27,7 @@ class UtilTest extends \PHPUnit\Framework\TestCase
      */
     public function testGetHoliday($iso, $date, array $expectation)
     {
-        $holiday = $this->service->getHoliday($iso, $date);
+        $holiday = $this->getService($iso)->getHoliday($date);
 
         if ($expectation[1] === null) {
             $this->assertNull($holiday);
@@ -74,6 +60,11 @@ class UtilTest extends \PHPUnit\Framework\TestCase
                 'name' => 'Ostermontag'
             )))
         );
+    }
+
+    protected function getService($iso)
+    {
+        return \OpenDroplet\Holiday\Util::make($iso);
     }
 
 }
